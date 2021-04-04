@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+  <ul>
+    <li><a routerLink="/admin">Home</a></li>
+    <li><a routerLink="/tutorials">Profile Update</a></li>
+    <li><a routerLink="/add">Add Customer</a></li>
+    <li><a routerLink="/work">Add Work</a></li>
+    <li style="float:right"><a class="active" routerLink="/home">Sign Out</a></li>
+  </ul>
+</body>
+</html>
+<div>
+  <div *ngIf="currentTutorial.id" class="edit-form">
+    <h4>DETAILS</h4>
+    <form id="frm">
+      <div class="form-group">
+        <p><b>Name: </b></p>
+        <input
+          type="text"  class="form-control" id="title" [(ngModel)]="currentTutorial.title"
+          name="title" pattern ="^[a-zA-Z]{3,25}"  maxlength = "25"  />
+      </div>
+      <div class="form-group">
+        <p><b>Job: </b></p>
+        <select name="job" id="job" [(ngModel)]="currentTutorial.job" required>
+            <option value="Electrician">Electrician</option>
+            <option value="Plumber">Plumber</option>
+            <option value="ApplianceService">Appliance Service</option>
+            <option value="Carpenters">Carpenters</option>
+            <option value="Painters">Painters</option>
+            <option value="PestControl">PestControl</option>
+            <option value="Cleaners">Cleaners</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <p><b>Email: </b></p>
+        <input
+          type="email" class="email" id="description" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          [(ngModel)]="currentTutorial.email" name="email"  />
+      </div>
+      <div class="form-group">
+        <p><b>Mobile Number:</b> </p>
+        <input
+          type="tel"  class="form-control"  id="mobile"  pattern= "[0-9]{10}"  maxlength = "10"
+          [(ngModel)]="currentTutorial.mobile"  name="mobile"   />
+      </div>
+      <div class="form-group">
+        <p><b>Current Location: </b></p>
+        <input
+          type="text"  class="form-control"  id="place" [(ngModel)]="currentTutorial.place"
+          name="place"  pattern ="^[a-zA-Z]{3,25}"  maxlength = "25" />
+      </div>
+      <button  type="submit"  class="badge badge-success mb-2" (click)="updateTutorial()">
+      Update
+    </button>
+    <br><br>
+    <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
+      Delete
+    </button>
+    <p>{{ message }}</p>
+   </form>
+  </div>
+  <div *ngIf="!currentTutorial.id">
+    <br />
+    <p>Cannot access this Tutorial...</p>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+  <ul>
+    <li><a routerLink="/admin">Home</a></li>
+    <li><a routerLink="/tutorials">Profile Update</a></li>
+    <li><a routerLink="/add">Add Customer</a></li>
+    <li><a routerLink="/work">Add Work</a></li>
+    <li style="float:right"><a class="active" routerLink="/home">Sign Out</a></li>
+  </ul>
+</body>
+</html>
+<html>
+<h2>Work Registration</h2>
+<div id='frm'>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <form name="myForm">
+      <div class="form-group">
+        <p><b>Date: *</b></p>
+        <input
+          type="date"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="tutorial.dates"
+          name="title"
+          ngModel
+        />
+      </div>
+      <div class="form-group">
+        <p><b>Job: *</b></p>
+        <select name="job" id="job" [(ngModel)]="tutorial.job" required>
+            <option value="Electrician">Electrician</option>
+            <option value="Plumber">Plumber</option>
+            <option value="ApplianceService">Appliance Service</option>
+            <option value="Carpenters">Carpenters</option>
+            <option value="Painters">Painters</option>
+            <option value="PestControl">PestControl</option>
+            <option value="Cleaners">Cleaners</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <p><b>Mobile Number: *</b> </p>
+        <input
+          type="tel"
+          class="form-control"
+          id="mobile" required
+          maxlength = "10" pattern= "[0-9]{10}"
+          [(ngModel)]="tutorial.mobile"  name="mobile"  />
+      </div>
+      <div class="form-group">
+        <p><b>Address: *</b></p>
+        <input
+          type="text"
+          class="form-control"
+          id="place" required
+          maxlength = "55"
+          [(ngModel)]="tutorial.place" name="place" />
+      </div>
+    </form>
+      <button (click)="saveWork()" class="btn btn-success">SAVE</button>
+    </div>
+    <div *ngIf="submitted">
+      <h4>Work details was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newWork()">Add</button>
+    </div>
+  </div>
+</div>

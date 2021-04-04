@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+</body>
+</html>
+<br><br>
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by Job"
+        [(ngModel)]="job"
+      />
+      <br>
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h1>Employee List</h1>
+    <table class="center">
+      <thead>
+        <tr >
+          <td style="border: 1px solid white; text-align: center;">Name</td>
+          <td style="border: 1px solid white; text-align: center;">Job</td>
+          <td style="border: 1px solid white; text-align: center;">Mobile</td>
+          <td style="border: 1px solid white; text-align: center;">Location</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tutorial of tutorials; let i = index"
+        [class.active]="i == currentIndex"
+      >
+        <td>{{ tutorial.title }}</td>
+        <td>{{ tutorial.job }}</td>
+        <td>{{ tutorial.mobile }}</td>
+        <td>{{ tutorial.place }}</td>
+    </tr>
+      </tbody>
+      </table>
+      </div>
+
+

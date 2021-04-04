@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+</head>
+<body>
+  <ul>
+    <li><a routerLink="/admin">Home</a></li>
+    <li><a routerLink="/tutorials">Profile Update</a></li>
+    <li><a routerLink="/add">Add Customer</a></li>
+    <li><a routerLink="/work">Add Work</a></li>
+    <li style="float:right"><a class="active" routerLink="/home">Sign Out</a></li>
+  </ul>
+</body>
+<div>
+  <h1>Employee Work List</h1>
+    <table class="center">
+      <thead>
+        <tr >
+          <td style="border: 1px solid white; text-align: center;">Date</td>
+          <td style="border: 1px solid white; text-align: center;">Job</td>
+          <td style="border: 1px solid white; text-align: center;">Mobile</td>
+          <td style="border: 1px solid white; text-align: center;">Location</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tutorial of works; let i = index" [class.active]="i == currentIndex" >
+        <td>{{ tutorial.dates }}</td>
+        <td>{{ tutorial.job }}</td>
+        <td>{{ tutorial.mobile }}</td>
+        <td>{{ tutorial.place }}</td>
+      </tbody>
+      </table>
+</div>
+</html>
+
